@@ -1,9 +1,0 @@
-{ 
-	"rqBody":{
-		"source_bank_id":"441",
-		"beneficiary_bank_id":"009",
-		"source_account_number":"11000000000099",
-		"beneficiary_account_number":"11000000000006",
-		"transaction_amount":1
-	}
-}
