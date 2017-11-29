@@ -1,2 +1,2 @@
 url,concurrent,success,failed,average,min,max,time_used,tps
-http://127.0.0.1:8084/sav_txn/v1/incoming/submit/OTHBANK,50,1000,0,3156.30500,220,8919,1m59.202820281s,12.44920
+http://127.0.0.1:8084/sav_txn/v1/incoming/submit/OTHBANK,100,900,0,521.15222,114,1538,6.318726522s,51.33333

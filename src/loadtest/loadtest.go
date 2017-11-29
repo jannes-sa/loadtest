@@ -2,6 +2,7 @@ package loadtest
 
 import (
 	"bytes"
+	"errors"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -45,7 +46,13 @@ var (
 
 // ExecuteTest ...
 func ExecuteTest(URL string, file string, parsingReqBody map[string]string,
-	conc int, nReq int, csvFileName string) (respDatas []Resp) {
+	conc int, nReq int, csvFileName string) (respDatas []Resp, err error) {
+
+	if nReq%conc > 0 {
+		err = errors.New("Value Must Matched Between Each Other")
+		log.Println(err)
+		return
+	}
 
 	timeNow = time.Now()
 	go getTPS()
@@ -78,10 +85,13 @@ func ExecuteTest(URL string, file string, parsingReqBody map[string]string,
 			)
 		}
 
-		var ix1 = 0
-		var ix2 = 0
-		var th = 0
-		var loopConc = 1
+		var (
+			ix1      = 0
+			ix2      = 0
+			th       = 0
+			loopConc = 1
+		)
+
 		ch := make(chan Resp)
 		for i := 0; i < len(newRqBody); i++ {
 			th++
